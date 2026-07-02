@@ -1,0 +1,130 @@
+/* ---------- Design tokens ---------- */
+:root {
+  --board-dark: #1f2f2b;
+  --board-mid:  #2c4038;
+  --chalk:      #f4f1e9;
+  --chalk-dim:  #F4F1E98C;
+  --accent:     #e8a355;
+  --accent-dim: #b57a3c;
+  --danger:     #d97757;
+
+  --font-display: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  --font-ui: "IBM Plex Sans", "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 30% 20%, #24352f, #14201c 70%);
+  font-family: var(--font-ui);
+}
+
+.calculator {
+  width: min(360px, 92vw);
+  background: var(--board-dark);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(244, 241, 233, 0.06);
+}
+
+.display {
+  padding: 22px 16px 10px;
+  text-align: right;
+}
+
+.history {
+  min-height: 1.2em;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--chalk-dim);
+  letter-spacing: 0.02em;
+}
+
+.current {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  color: var(--chalk);
+  line-height: 1.2;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.key {
+  border: none;
+  border-radius: 12px;
+  padding: 18px 0;
+  font-family: var(--font-ui);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--chalk);
+  background: var(--board-mid);
+  cursor: pointer;
+  transition: transform 0.06s ease, background 0.15s ease;
+}
+
+.key:hover {
+  background: #35493f;
+}
+
+.key:active {
+  transform: scale(0.95);
+}
+
+.key:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.key--utility {
+  color: var(--danger);
+  background: rgba(217, 119, 87, 0.12);
+}
+
+.key--utility:hover {
+  background: rgba(217, 119, 87, 0.2);
+}
+
+.key--operator {
+  color: var(--board-dark);
+  background: var(--accent);
+  font-size: 1.3rem;
+}
+
+.key--operator:hover {
+  background: #f0b06a;
+}
+
+.key--equals {
+  background: var(--accent-dim);
+  color: var(--chalk);
+}
+
+.key--equals:hover {
+  background: #a06a35;
+}
+
+.key--wide {
+  grid-column: span 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .key {
+    transition: none;
+  }
+}
