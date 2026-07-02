@@ -73,7 +73,9 @@ function compute() {
       return;
   }
 
-  currentValue = result;
+  currentValue = typeof result === "number"
+    ? String(Math.round(result * 1e10) / 1e10)
+    : result;
 
   operator = null;
   previousValue = null;
